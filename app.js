@@ -10,9 +10,16 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         formObject[key] = value;
     });
 
-    // オブジェクトをJSON形式の文字列に変換
-    var jsonString = JSON.stringify(formObject, null, 2);
+    // オブジェクトのプロパティを個別に表示
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // 結果表示エリアをクリア
 
-    // 結果を表示
-    document.getElementById('result').textContent = jsonString;
+    for (var key in formObject) {
+        if (formObject.hasOwnProperty(key)) {
+            var p = document.createElement('p');
+            p.textContent = key + ': ' + formObject[key];
+            resultDiv.appendChild(p);
+        }
+    }
 });
+
