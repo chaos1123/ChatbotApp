@@ -1,0 +1,14 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "Simple web app to use OpenAI",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "dotenv": "^10.0.0",
+    "openai": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
