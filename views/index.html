@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI App</title>
+</head>
+<body>
+    <h1>Ask OpenAI</h1>
+    <form id="questionForm">
+        <input type="text" id="question" placeholder="Ask a question">
+        <button type="submit">Submit</button>
+    </form>
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const question = document.getElementById('question').value;
+            const responseElement = document.getElementById('response');
+
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            responseElement.textContent = data;
+        });
+    </script>
+</body>
+</html>
